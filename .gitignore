@@ -1,0 +1,24 @@
+# ============================================================
+#  Apache Hop — arquivos com segredos ou gerados pelo container
+# ============================================================
+
+# Credenciais reais (use os arquivos .example como modelo)
+.env
+etl/config/dev-config.json
+etl/project-config.json
+
+# Conexão criada pela GUI do Hop (pode conter senha em texto puro)
+etl/metadata/rdbms/supabase.json
+
+# Run configurations geradas automaticamente pelo Hop
+etl/metadata/pipeline-run-configuration/
+etl/metadata/workflow-run-configuration/
+
+# Saidas, auditoria e logs do Apache Hop
+etl/**/*.log
+audit/
+.hop/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db

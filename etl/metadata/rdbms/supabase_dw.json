@@ -1,0 +1,28 @@
+{
+  "virtualPath": "",
+  "rdbms": {
+    "POSTGRESQL": {
+      "pluginId": "POSTGRESQL",
+      "pluginName": "PostgreSQL",
+      "accessType": 0,
+      "hostname": "${SUPABASE_HOST}",
+      "port": "${SUPABASE_PORT}",
+      "databaseName": "${SUPABASE_DB}",
+      "username": "${SUPABASE_USER}",
+      "password": "${SUPABASE_PASS}",
+      "manualUrl": "",
+      "sshTunnelEnabled": false,
+      "attributes": {
+        "SUPPORTS_TIMESTAMP_DATA_TYPE": "Y",
+        "SUPPORTS_BOOLEAN_DATA_TYPE": "Y",
+        "QUOTE_ALL_FIELDS": "N",
+        "PRESERVE_RESERVED_WORD_CASE": "Y",
+        "FORCE_IDENTIFIERS_TO_LOWERCASE": "N",
+        "FORCE_IDENTIFIERS_TO_UPPERCASE": "N",
+        "EXTRA_OPTION_POSTGRESQL.sslmode": "require",
+        "EXTRA_OPTION_POSTGRESQL.prepareThreshold": "0"
+      }
+    }
+  },
+  "name": "supabase_dw"
+}

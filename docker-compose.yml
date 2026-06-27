@@ -1,0 +1,49 @@
+name: olist-etl
+
+# Apache Hop em container Docker.
+#
+#  - hop-web : GUI no navegador (http://localhost:8080/ui) — substitui a instalacao local.
+#  - hop-run : execucao headless do workflow completo (perfil "run").
+#
+# Pre-requisitos:
+#  1. Supabase com o DDL ja executado (docs/etapa2-etl.md, Tutorial 3).
+#  2. Copie etl/config/dev-config.json.example para etl/config/dev-config.json
+#     e preencha as credenciais do Supabase.
+#
+# A pasta ./datasets eh montada em /datasets; como DATASETS_DIR = ${PROJECT_HOME}/../datasets
+# e PROJECT_HOME = /project, os CSVs sao encontrados em /datasets automaticamente.
+
+services:
+  hop-web:
+    image: apache/hop-web:latest
+    container_name: olist-hop-web
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./etl:/project
+      - ./datasets:/datasets:ro
+    environment:
+      HOP_PROJECT_DIRECTORY: /project
+      HOP_PROJECT_NAME: olist-etl
+      HOP_PROJECT_CONFIG_FILE_NAME: project-config.json
+      HOP_ENVIRONMENT_NAME: dev
+      HOP_ENVIRONMENT_CONFIG_FILE_NAME_PATHS: /project/config/dev-config.json
+    restart: unless-stopped
+
+  hop-run:
+    image: apache/hop:latest
+    container_name: olist-hop-run
+    profiles: ["run"]
+    volumes:
+      - ./etl:/project:ro
+      - ./datasets:/datasets:ro
+    environment:
+      HOP_LOG_LEVEL: Basic
+      HOP_PROJECT_DIRECTORY: /project
+      HOP_PROJECT_NAME: olist-etl
+      HOP_PROJECT_CONFIG_FILE_NAME: project-config.json
+      HOP_ENVIRONMENT_NAME: dev
+      HOP_ENVIRONMENT_CONFIG_FILE_NAME_PATHS: /project/config/dev-config.json
+      HOP_RUN_CONFIG: local
+      # $$ escapa a interpolacao do compose -> o container recebe ${PROJECT_HOME} literal
+      HOP_FILE_PATH: $${PROJECT_HOME}/workflows/wf_carga_completa.hwf

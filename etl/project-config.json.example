@@ -1,0 +1,34 @@
+{
+  "metadataBaseFolder" : "${PROJECT_HOME}/metadata",
+  "unitTestsBasePath" : "${PROJECT_HOME}",
+  "dataSetsCsvFolder" : "",
+  "enforcingExecutionInHome" : true,
+  "parentProjectName" : "",
+  "config" : {
+    "variables" : [ {
+      "name" : "SUPABASE_HOST",
+      "value" : "aws-1-sa-east-1.pooler.supabase.com",
+      "description" : "Host do Pooler (IPv4). Copie exato do dashboard (Connect > Session pooler)"
+    }, {
+      "name" : "SUPABASE_PORT",
+      "value" : "5432",
+      "description" : "5432 = Session pooler (recomendado p/ ETL); 6543 = Transaction pooler"
+    }, {
+      "name" : "SUPABASE_DB",
+      "value" : "postgres",
+      "description" : "Banco"
+    }, {
+      "name" : "SUPABASE_USER",
+      "value" : "postgres.SEU_PROJECT_REF",
+      "description" : "Usuario do pooler (postgres.<project-ref>)"
+    }, {
+      "name" : "SUPABASE_PASS",
+      "value" : "SUA_SENHA_DO_SUPABASE",
+      "description" : "Senha do banco. Copie este arquivo para project-config.json e preencha"
+    }, {
+      "name" : "DATASETS_DIR",
+      "value" : "${PROJECT_HOME}/../datasets",
+      "description" : "Pasta com os CSVs originais da Olist"
+    } ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "variables" : [ {
+    "name" : "SUPABASE_HOST",
+    "value" : "aws-1-sa-east-1.pooler.supabase.com",
+    "description" : "Host do Pooler (IPv4). Copie EXATO do dashboard (Connect > Session pooler)"
+  }, {
+    "name" : "SUPABASE_PORT",
+    "value" : "5432",
+    "description" : "5432 = Session pooler (recomendado p/ ETL). 6543 = Transaction pooler"
+  }, {
+    "name" : "SUPABASE_DB",
+    "value" : "postgres",
+    "description" : "Nome do banco no Supabase"
+  }, {
+    "name" : "SUPABASE_USER",
+    "value" : "postgres.SEU_PROJECT_REF",
+    "description" : "Usuario no formato postgres.<project-ref>"
+  }, {
+    "name" : "SUPABASE_PASS",
+    "value" : "SUA_SENHA_DO_SUPABASE",
+    "description" : "Senha do banco definida ao criar o projeto Supabase"
+  } ]
+}
